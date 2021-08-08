@@ -5,7 +5,7 @@ import { parse } from 'node-html-parser';
  * Reverse Lookup of Phone number
  * @param {string | number} number the phone number
  */
-async function reverseLookup(number: string | number): Promise<reverseLookupResult> {
+export async function reverseLookup(number: string | number): Promise<reverseLookupResult> {
   try {
     if (
       !number ||
@@ -45,7 +45,3 @@ export interface reverseLookupResult {
 }
 
 export default reverseLookup;
-
-module.exports = {
-  reverseLookup
-};
