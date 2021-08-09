@@ -23,9 +23,13 @@ export async function reverseLookup(number: string | number): Promise<reverseLoo
     if (head && head.textContent.trim().includes('Es konnte kein Teilnehmer gefunden werden.')) {
       return { status: 'not found', succeeded: false, error: 404 };
     }
-    const results = dom.querySelectorAll('a.name');
-    const textResults = results.map((v) => v.textContent.trim().replace(/\n|\r/g, ''));
-    return { status: 'done', succeeded: true, result: textResults };
+    const nameElements = dom.querySelectorAll('div.name[title]');
+    const results = nameElements.map((v) => {
+      const ifPrivate = v.parentNode.attributes.itemtype == 'http://schema.org/Person';
+      const type = ifPrivate ? 'person' : 'company';
+      return { name: v.attributes.title, type: type } as resultEntry;
+    });
+    return { status: 'done', succeeded: true, results };
   } catch (err) {
     if (err.message === 'Request failed with status code 410') {
       return { status: 'not found', succeeded: false, error: 404 };
@@ -41,7 +45,14 @@ export interface reverseLookupResult {
   /** Error Message, Error Status Code or any Error */
   error?: unknown;
   /** Array of Names of possible owners */
-  result?: string[];
+  results?: resultEntry[];
+}
+
+export interface resultEntry {
+  /** Name of the owner */
+  name: string;
+  /** If person or a company */
+  type: 'person' | 'company';
 }
 
 export default reverseLookup;
