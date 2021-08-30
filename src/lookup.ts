@@ -30,7 +30,8 @@ export async function reverseLookup(number: string | number): Promise<reverseLoo
       return { name: v.attributes.title, type: type } as resultEntry;
     });
     return { status: 'done', succeeded: true, results };
-  } catch (err) {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (err: any) {
     if (err.message === 'Request failed with status code 410') {
       return { status: 'not found', succeeded: false, error: 404 };
     }
