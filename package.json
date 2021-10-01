@@ -30,7 +30,7 @@
     "node": ">=14.x"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.22.0",
     "node-html-parser": "^4.1.4",
     "prompts": "^2.4.1"
   },
