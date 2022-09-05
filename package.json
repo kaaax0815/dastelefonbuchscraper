@@ -44,7 +44,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-html": "^6.1.2",
     "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "prettier": "^2.3.2",
     "terser-webpack-plugin": "^5.1.4",
     "ts-loader": "^9.2.5",
