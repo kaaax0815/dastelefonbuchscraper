@@ -1,3 +1,4 @@
+Not maintained anymore. May still work
 # Das Telefonbuch Scraper
 
 ## 💻 First Start
